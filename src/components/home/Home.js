@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import getUserByName from '../../utils/github';
+import { getUserByName, getReposFromUser } from '../../utils/github';
 import logo from '../../logo.svg';
 import './Home.css';
 
@@ -10,7 +10,8 @@ export default class Home extends Component {
 
     this.state = {
       username: null,
-      user: null
+      user: null,
+      repos: null
     }
 
     this.onSubmitClick = this.onSubmitClick.bind(this);
@@ -24,9 +25,14 @@ export default class Home extends Component {
   fetchData() {
     const { username } = this.state;
     if(username) {
-      getUserByName(username).then((payload) => {
-        console.log(payload.data);
-        this.setState({ user: payload.data });
+      getUserByName(username).then((data) => {
+        console.log('user: ', data);
+        this.setState({ user: data });
+      }).then(() => {
+        getReposFromUser(username).then((data) => {
+          console.log('repos: ', data);
+          this.setState({ repos: data });
+        })
       });
     }
   }
