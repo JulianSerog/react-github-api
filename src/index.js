@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './index.css';
-import Home from './Home';
+import Home from './components/home/Home';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
