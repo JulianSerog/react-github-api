@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-import './badge.css';
+import './card.css';
 
-export default class Badge extends Component {
+export default class Card extends Component {
   constructor(props) {
     super(props);
-
-    this.onSubmitClick = this.onSubmitClick.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
   }
+
 
   render() {
     return (
