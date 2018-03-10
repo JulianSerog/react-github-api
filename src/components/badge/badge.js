@@ -5,9 +5,6 @@ import './badge.css';
 export default class Badge extends Component {
   constructor(props) {
     super(props);
-
-    this.onSubmitClick = this.onSubmitClick.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
   }
 
   render() {

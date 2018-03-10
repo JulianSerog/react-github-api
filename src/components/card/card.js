@@ -11,12 +11,10 @@ export default class Card extends Component {
   render() {
     return (
       <div className="row badge-container">
-        <div className="col-4">
-            <img className="img-fluid" src={this.props.image} />
-        </div>
-        <div className="col-8">
-            <h3><strong>Followers: </strong>{this.props.followers}</h3>
-            <h3><strong>Following: </strong>{this.props.following}</h3>
+        <div className="col-12">
+            <h3><strong>Name: </strong>{this.props.repo.name}</h3>
+            <h3><strong>Description: </strong>{this.props.repo.description}</h3>
+            <h3><strong>URL: </strong>{this.props.repo.url}</h3>
         </div>
       </div>
     );

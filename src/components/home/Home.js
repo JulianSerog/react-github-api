@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import { getUserByName, getReposFromUser } from '../../utils/github';
 import logo from '../../logo.svg';
 import './Home.css';
+
+// components
 import Badge from '../badge/badge';
+import Card from '../card/card';
 
 export default class Home extends Component {
   constructor() {
@@ -82,8 +85,10 @@ export default class Home extends Component {
   renderRepos() {
     const { repos } = this.state;
     return ( 
-      <div>
-
+      <div className="repos-container">
+        {repos.map((repo) => {
+          <Card repo={repo}/>
+        })}
       </div>
     );
   }
