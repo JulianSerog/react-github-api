@@ -30,11 +30,9 @@ export default class Home extends Component {
     const { username } = this.state;
     if(username) {
       getUserByName(username).then((data) => {
-        console.log('user: ', data);
         this.setState({ user: data });
       }).then(() => {
         getReposFromUser(username).then((data) => {
-          console.log('repos: ', data);
           this.setState({ repos: data });
         })
       });
@@ -54,13 +52,11 @@ export default class Home extends Component {
   renderSearch() {
     const { user, username } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+      <div className="App container">
         <div>
-          <h4>Search for a github user name</h4>
+          <div className="row header">
+            <h2 className="col-12 header-text">Search for a github user name</h2>
+          </div>
           <div className="search form-group row">
             <label className="col-2 col-form-label">Github username:</label>
               <div className="col-8">
@@ -87,7 +83,7 @@ export default class Home extends Component {
     return ( 
       <div className="repos-container">
         {repos.map((repo) => {
-          <Card repo={repo}/>
+          return <Card key={repo.id} repo={repo}/>;
         })}
       </div>
     );

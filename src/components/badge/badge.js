@@ -9,14 +9,14 @@ export default class Badge extends Component {
 
   render() {
     return (
-      <div className="row badge-container">
-        <div className="col-4">
-            <img className="img-fluid" src={this.props.image} />
-        </div>
-        <div className="col-8">
+      <div className="row text-center">
+          <div className="col-12 badge-container">
+            <img className="img profile-img img-circle " alt="Responsive image" src={this.props.image} />
+        
+        
             <h3><strong>Followers: </strong>{this.props.followers}</h3>
             <h3><strong>Following: </strong>{this.props.following}</h3>
-        </div>
+          </div>
       </div>
     );
   }
