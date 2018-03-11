@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { getUserByName, getReposFromUser } from '../../utils/github';
-import logo from '../../logo.svg';
 import './Home.css';
 
 // components
@@ -35,6 +34,8 @@ export default class Home extends Component {
         getReposFromUser(username).then((data) => {
           this.setState({ repos: data });
         })
+      }).catch(() => {
+        alert('could not find data for ' + username);
       });
     }
   }
@@ -50,7 +51,7 @@ export default class Home extends Component {
   }
 
   renderSearch() {
-    const { user, username } = this.state;
+    const { username } = this.state;
     return (
       <div className="App container">
         <div>
@@ -62,7 +63,7 @@ export default class Home extends Component {
               <div className="col-8">
                 <input className="form-control" type="text" placeholder="search" value={this.state.username} onChange={this.handleUsernameChange} />
               </div>
-            <button className="col-1 btn btn-primary" onClick={this.onSubmitClick}>Submit</button>
+            <button className="col-2 btn btn-submit" onClick={this.onSubmitClick}>Submit</button>
           </div>
         </div>
       </div>
@@ -79,9 +80,10 @@ export default class Home extends Component {
   }
 
   renderRepos() {
-    const { repos } = this.state;
+    const { repos, username } = this.state;
     return ( 
       <div className="repos-container">
+        <h2 className="text-center repo-header">Repositories for {username}</h2>
         {repos.map((repo) => {
           return <Card key={repo.id} repo={repo}/>;
         })}
